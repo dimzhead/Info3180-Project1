@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+
+
+{% block main %}
+
+<div id= "card">
+        <section class="section">
+            <div class="top">
+                <div class="image">
+                    
+                    <img src="{{ url_for('static', filename="uploads/" + filename) }}" class="responsive"/>
+    
+                </div>
+    
+                <div>
+                    <h4> {{ name }} </h4>
+                    <p> <p style="display:inline"><img src="{{ url_for('static',filename = 'css_images/new-email-outline.svg') }}" alt=""> {{ email }}</p>
+                    <p > <p style="display:inline"><img src="{{ url_for('static',filename = 'css_images/you-are-here.svg') }}" alt=""></p> {{ location }}</p>
+                    <p><p style="display:inline"><img src="{{ url_for('static',filename = 'css_images/calendar.svg') }}" alt="">joined on {{ created }}</p>
+                </div>
+            </div>
+            <div class="bottom">
+                <h5>about me</h5>
+                <p> {{ bio }} </p>
+                <p class="button-holder">
+                    <button class="btn btn-success"> Send Message </button>
+                    <button class="btn btn-primary"> Follow </button>
+                </p>
+    
+            </div>
+            
+        </section>
+    </div>
+
+{% endblock %}

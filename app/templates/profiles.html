@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+{% block css %}
+
+<style type="text/css">
+    #card {
+    display: flex;
+    
+   
+    justify-content: center;
+    margin-top: 2%;
+}
+
+.section {
+    width: 75%;
+    border: 2px solid grey;
+    border-radius: 7px;
+    padding: 1.5%;
+    /*max-height: 170px;*/
+}
+.top {
+    display: flex;
+    margin-bottom: 5%;
+}
+.responsive {
+    width: 100%;
+    height: auto;
+    max-width: 150px;
+   
+  }
+
+  .top div:nth-child(2) img {
+      width: 7%;
+      margin-right: 2%;
+      /* vertical-align: -10%; */
+  } 
+
+  .top div:nth-child(2) {
+      margin-left: 2%;
+      width: 50%;
+  }
+
+  .image {
+       width: auto; 
+  }
+
+  .button-holder {
+      display: flex;
+      justify-content: space-around;
+  }
+
+  .button-holder button {
+      width: 45%;
+  }
+
+  .finish {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width:50%;
+  }
+
+  .finish a{
+      width: 20vw;
+  }
+</style>
+
+{% endblock %}
+
+
+{% block main %}
+
+{% include 'flash_messages.html' %}
+
+{% for i in user %}
+
+<div id= "card">
+        <section class="section">
+            <div class="top">
+                <div class="image">
+                    
+                    <img src="{{ url_for('static', filename="uploads/" + i.img) }}" alt="" class="responsive">
+    
+                </div>
+    
+                <div>
+                    <h4> {{ i.name }} </h4>
+                    <p> <p style="display:inline"><img src="{{ url_for('static',filename = 'css_images/avatar.svg') }}" alt=""> {{ i.gender }} </p>
+                    <p > <p style="display:inline"><img src="{{ url_for('static',filename = 'css_images/you-are-here.svg') }}" alt=""></p> {{ i.location }}</p>
+                    
+                </div>
+                <div class="finish">
+                    <a href='{{ url_for("user",userid=i.id) }}' class="btn btn-success"> View Profile </a>
+                </div>
+            </div>
+            
+        </section>
+    </div>
+{% endfor %}
+
+{% endblock %}
